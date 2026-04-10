@@ -2461,7 +2461,7 @@ let currentSeason = parseInt(localStorage.getItem('eafc_current_season') || '1')
 
 function seasonKey()        { return 'S' + currentSeason; }
 function seasonDataPath(n)  { const s = n !== undefined ? n : currentSeason; return `seasons/s${s}/league-data.json`; }
-function seasonImagesPath() { return `seasons/S${currentSeason}/match-images/`; }
+function seasonImagesPath() { return `seasons/s${currentSeason}/match-images/`; }
 
 function seasonLocalKey(k)  { return `eafc_S${currentSeason}_${k}`; }
 

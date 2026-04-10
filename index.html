@@ -1276,6 +1276,177 @@ body {
 .poster-lb-pos-2 { color: #ADB5BD; }
 .poster-lb-pos-3 { color: #CD7F32; }
 
+/* ─── SEASON PILL ─────────────────────────────────────────────── */
+.season-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: linear-gradient(135deg, rgba(200,241,53,0.12), rgba(200,241,53,0.06));
+  border: 1px solid var(--acid-border);
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 0.72rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  color: var(--acid);
+  cursor: default;
+  box-shadow: 0 0 12px rgba(200,241,53,0.1);
+}
+
+/* Season selector cards in admin */
+.season-list {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 12px; max-height: 220px; overflow-y: auto;
+}
+.season-card {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 10px 13px;
+  transition: border-color var(--t), background var(--t);
+}
+.season-card.active-season {
+  border-color: var(--acid-border);
+  background: var(--acid-soft);
+}
+.season-card:hover { border-color: var(--border-2); }
+.season-card-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: 3px; color: var(--text);
+}
+.season-card.active-season .season-card-label { color: var(--acid); }
+.season-card-meta {
+  font-size: 0.68rem; color: var(--muted);
+  font-family: 'JetBrains Mono', monospace; margin-top: 2px;
+}
+.season-card-actions { display: flex; gap: 5px; }
+
+/* ─── CALENDAR ────────────────────────────────────────────────── */
+.cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.cal-month-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 4px; color: var(--text);
+}
+.cal-nav-btn {
+  background: var(--bg-3); border: 1px solid var(--border-2);
+  color: var(--muted-2); border-radius: var(--r-sm);
+  width: 36px; height: 36px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--t);
+}
+.cal-nav-btn:hover { background: var(--acid-soft); color: var(--acid); border-color: var(--acid-border); }
+
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 4px; margin-bottom: 20px;
+}
+.cal-day-label {
+  text-align: center; font-size: 0.6rem;
+  color: var(--muted); font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px; padding: 6px 0;
+}
+.cal-cell {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 6px 4px;
+  min-height: 52px; position: relative;
+  transition: border-color var(--t), background var(--t);
+  cursor: default;
+}
+.cal-cell.today {
+  border-color: var(--acid-border);
+  background: var(--acid-soft);
+}
+.cal-cell.has-holiday { border-color: rgba(255,149,0,0.35); background: rgba(255,149,0,0.05); }
+.cal-cell.has-event   { border-color: rgba(255,45,85,0.4);  background: rgba(255,45,85,0.06); }
+.cal-cell.has-fixture { border-color: rgba(0,229,255,0.3);  background: rgba(0,229,255,0.04); }
+.cal-cell.other-month { opacity: 0.35; }
+
+.cal-date-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem; letter-spacing: 1px; color: var(--text);
+  line-height: 1;
+}
+.cal-cell.today .cal-date-num { color: var(--acid); }
+
+.cal-dot-row { display: flex; gap: 2px; margin-top: 4px; flex-wrap: wrap; }
+.cal-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+}
+.cal-dot.d-holiday { background: var(--orange); }
+.cal-dot.d-event   { background: var(--red); }
+.cal-dot.d-fixture { background: var(--cyan); }
+
+.cal-legend {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
+}
+.cal-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.7rem; color: var(--muted-2);
+  font-family: 'JetBrains Mono', monospace;
+}
+.cal-legend-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+
+.cal-info-panel {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px; margin-bottom: 14px;
+}
+.cal-info-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem; letter-spacing: 2px; color: var(--acid);
+  margin-bottom: 10px;
+}
+.cal-event-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+.cal-event-item:last-child { border-bottom: none; }
+.cal-event-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+}
+.cal-clock-bar {
+  background: var(--bg-2); border: 1px solid var(--border-acid);
+  border-radius: var(--r); padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.cal-clock {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem; color: var(--acid); letter-spacing: 2px;
+}
+.cal-tz-label {
+  font-size: 0.62rem; color: var(--muted);
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 1.5px;
+}
+
+/* auto-scheduler toggle */
+.toggle-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.83rem; color: var(--text-soft);
+}
+.toggle-row:last-child { border-bottom: none; }
+.toggle-switch {
+  position: relative; width: 40px; height: 22px; flex-shrink: 0;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0; background: var(--bg-4);
+  border-radius: 22px; cursor: pointer;
+  border: 1px solid var(--border-2);
+  transition: background var(--t), border-color var(--t);
+}
+.toggle-slider::before {
+  content: ''; position: absolute;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--muted); left: 2px; top: 2px;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), background var(--t);
+}
+.toggle-switch input:checked + .toggle-slider { background: rgba(200,241,53,0.2); border-color: var(--acid-border); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); background: var(--acid); }
+
 /* ─── DESKTOP LAYOUT ──────────────────────────────────────────── */
 @media (min-width: 768px) {
   :root { --sidebar-w: 230px; }
@@ -1396,6 +1567,10 @@ a { color: var(--acid); }
     </div>
   </div>
   <div class="top-bar-right">
+    <div id="season-pill" class="season-pill" title="Current season">
+      <i class="fas fa-trophy" style="font-size:0.65rem"></i>
+      <span id="season-pill-label">S1</span>
+    </div>
     <div class="gh-status-pill">
       <div id="gh-status-dot" class="status-dot status-local" title="GitHub status"></div>
       <span id="gh-status-label">Local</span>
@@ -1532,7 +1707,7 @@ a { color: var(--acid); }
     <div class="page-header">
       <div class="page-header-text">
         <h2>Rules</h2>
-        <p class="page-subtitle">Official regulations · Season 1</p>
+        <p class="page-subtitle" id="rules-season-subtitle">Official regulations · Season 1</p>
       </div>
       <div class="header-actions">
         <button class="btn-icon-action" onclick="downloadRulesImage()" title="Export rules"><i class="fas fa-camera"></i></button>
@@ -1547,7 +1722,7 @@ a { color: var(--acid); }
             <div class="rules-brand-url"><i class="fas fa-globe"></i> mettlestate.com</div>
           </div>
         </div>
-        <div class="rules-season-badge">SEASON 1</div>
+        <div class="rules-season-badge" id="rules-season-badge">SEASON 1</div>
       </div>
       <div class="rules-points-banner">
         <div class="rules-points-item win"><span class="rules-points-num">3</span><span class="rules-points-label">Win</span></div>
@@ -1589,9 +1764,12 @@ a { color: var(--acid); }
         <div class="rules-section">
           <h3><i class="fas fa-clock"></i> Postponements</h3>
           <ul>
-            <li>Each player may postpone <strong>2 matches per month</strong> (including your opponent postponing against you).</li>
-            <li>Exceptions are made for valid reasons (broken phone, family emergency, etc.).</li>
-            <li>If both submit screenshot evidence, result is a <strong class="clr-yellow">draw or postponement</strong> at admin discretion.</li>
+            <li>Each player receives <strong>20 postponements for the entire season</strong>. Once all 20 are used, any further postponement request will result in an <strong class="clr-red">automatic forfeit (3-0 loss)</strong> — no exceptions.</li>
+            <li>Postponements are tracked automatically. Your remaining count is visible on your player profile.</li>
+            <li>A postponement counts as used when either you <em>or</em> your opponent requests it for your shared fixture.</li>
+            <li>Valid reasons (broken phone, family emergency, load-shedding, etc.) may be considered at admin discretion — but do <strong>not</strong> restore a used postponement automatically.</li>
+            <li>If both players submit screenshot evidence of inability to play, the match may be ruled a <strong class="clr-yellow">draw</strong> at admin discretion, but the postponement token is still spent.</li>
+            <li><strong class="clr-red">Attempting to postpone at 0 remaining = auto-forfeit immediately.</strong></li>
           </ul>
         </div>
         <div class="rules-section">
@@ -1668,6 +1846,42 @@ a { color: var(--acid); }
             <button class="btn-danger"  onclick="disconnectGitHub()">Disconnect</button>
           </div>
           <div id="gh-connect-status" class="gh-status-msg"></div>
+        </div>
+      </div>
+
+      <!-- Season Selector -->
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this); renderSeasonList()">
+          <span class="acc-icon-wrap" style="background:rgba(255,214,10,0.08);border-color:rgba(255,214,10,0.25);color:var(--gold)"><i class="fas fa-layer-group"></i></span>
+          <span class="acc-label">Season Manager</span>
+          <i class="fas fa-chevron-down acc-chevron"></i>
+        </button>
+        <div class="acc-body">
+          <p class="acc-desc">Switch between seasons or start a new one. Old seasons are archived to GitHub under <code>seasons/sN/league-data.json</code>.</p>
+
+          <div style="background:var(--acid-soft);border:1px solid var(--acid-border);border-radius:var(--r-sm);padding:10px 13px;margin-bottom:12px;display:flex;align-items:center;gap:10px">
+            <i class="fas fa-trophy" style="color:var(--acid)"></i>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--acid)" id="season-current-label">SEASON 1 — CURRENT</div>
+              <div style="font-size:0.68rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px">Path: <span id="season-current-path">seasons/s1/league-data.json</span></div>
+            </div>
+          </div>
+
+          <div id="season-list" class="season-list"></div>
+
+          <div class="acc-btn-row">
+            <button class="btn-primary" onclick="startNewSeason()" style="flex:1">
+              <i class="fas fa-plus-circle"></i> Start New Season
+            </button>
+            <button class="btn-secondary" onclick="renderSeasonList()" style="padding:10px 12px">
+              <i class="fas fa-rotate"></i>
+            </button>
+          </div>
+          <div id="season-mgmt-status" style="font-size:0.75rem;margin-top:8px;font-family:'JetBrains Mono',monospace"></div>
+
+          <div style="font-size:0.72rem;color:var(--muted-2);margin-top:10px;background:rgba(255,214,10,0.05);border:1px solid rgba(255,214,10,0.2);padding:9px;border-radius:var(--r-sm)">
+            <i class="fas fa-info-circle" style="color:var(--gold)"></i> Starting a new season archives the current one to GitHub and clears all data for the new season. Players, fixtures, and results are season-specific.
+          </div>
         </div>
       </div>
 
@@ -1828,6 +2042,54 @@ a { color: var(--acid); }
         </div>
       </div>
 
+      <!-- Auto-Schedule Config -->
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <span class="acc-icon-wrap" style="background:rgba(0,229,255,0.08);border-color:rgba(0,229,255,0.2);color:var(--cyan)"><i class="fas fa-clock-rotate-left"></i></span>
+          <span class="acc-label">Auto-Schedule Config</span>
+          <i class="fas fa-chevron-down acc-chevron"></i>
+        </button>
+        <div class="acc-body">
+          <p class="acc-desc">Configure automatic fixture generation and draws at 2:00 AM SAST (GMT+2).</p>
+          <div style="background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;margin-bottom:10px">
+            <div class="toggle-row">
+              <span><i class="fas fa-shuffle" style="color:var(--cyan);margin-right:6px"></i>Auto-generate fixtures at 2am</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-auto-gen" onchange="saveAutoScheduleConfig()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span><i class="fas fa-dice" style="color:var(--purple);margin-right:6px"></i>Auto-draw matches at 2am</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-auto-draw" onchange="saveAutoScheduleConfig()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span><i class="fas fa-calendar-xmark" style="color:var(--orange);margin-right:6px"></i>Skip on Mettlestate event days</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-skip-events" checked onchange="saveAutoScheduleConfig()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span><i class="fas fa-umbrella-beach" style="color:var(--gold);margin-right:6px"></i>Skip on SA public holidays</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-skip-holidays" checked onchange="saveAutoScheduleConfig()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted);margin-bottom:8px;font-family:'JetBrains Mono',monospace">IGNORE SPECIFIC FIXTURES (comma-sep usernames, e.g. player1,player2)</p>
+          <input type="text" id="auto-ignore-fixtures" placeholder="Leave blank to ignore none" class="field" style="margin-bottom:8px" oninput="saveAutoScheduleConfig()">
+          <div id="auto-schedule-status" style="font-size:0.75rem;color:var(--muted);margin-top:6px;font-family:'JetBrains Mono',monospace"></div>
+          <div style="font-size:0.72rem;color:var(--muted-2);margin-top:10px;background:rgba(0,229,255,0.05);border:1px solid var(--border-cyan);padding:9px;border-radius:var(--r-sm)">
+            <i class="fas fa-info-circle" style="color:var(--cyan)"></i> Keep this page open (or open in background) for auto-scheduling to work. The scheduler checks every minute.
+          </div>
+        </div>
+      </div>
+
       <!-- Match Evidence -->
       <div class="acc-item">
         <button class="acc-trigger" onclick="toggleAcc(this)">
@@ -1846,6 +2108,53 @@ a { color: var(--acid); }
     </div>
   </section>
 
+  <!-- ═══════════════════ CALENDAR ═══════════════════ -->
+  <section id="calendar" class="tab-content">
+    <div class="page-header">
+      <div class="page-header-text">
+        <h2>Calendar</h2>
+        <p class="page-subtitle">SA Holidays · Mettlestate Events · GMT+2</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon-action" onclick="refreshMettlestateEvents()" title="Refresh events from Mettlestate"><i class="fas fa-rotate"></i></button>
+      </div>
+    </div>
+
+    <!-- Clock -->
+    <div class="cal-clock-bar">
+      <div>
+        <div class="cal-clock" id="cal-clock-time">--:--:--</div>
+        <div class="cal-tz-label">SOUTH AFRICA · GMT+2 (SAST)</div>
+      </div>
+      <div id="cal-today-label" style="font-size:0.75rem;color:var(--muted-2);font-family:'JetBrains Mono',monospace;text-align:right"></div>
+    </div>
+
+    <!-- Legend -->
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--orange)"></div> SA Holiday</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--red)"></div> Mettlestate Event</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--cyan)"></div> Fixture Day</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--acid)"></div> Today</div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="cal-header">
+      <button class="cal-nav-btn" onclick="calPrev()"><i class="fas fa-chevron-left"></i></button>
+      <div class="cal-month-label" id="cal-month-label">MONTH YEAR</div>
+      <button class="cal-nav-btn" onclick="calNext()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+
+    <!-- Upcoming Events Panel -->
+    <div class="cal-info-panel">
+      <div class="cal-info-title"><i class="fas fa-calendar-exclamation"></i> &nbsp;UPCOMING EVENTS &amp; HOLIDAYS</div>
+      <div id="cal-upcoming-list"><div style="color:var(--muted);font-size:0.8rem">Loading…</div></div>
+    </div>
+
+    <!-- Mettlestate Events Status -->
+    <div id="cal-event-sync-status" style="font-size:0.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px"></div>
+  </section>
+
 </main>
 
 <!-- BOTTOM NAV -->
@@ -1854,6 +2163,7 @@ a { color: var(--acid); }
   <button class="nav-btn" data-tab="fixtures"><i class="fas fa-futbol"></i><span>Fixtures</span></button>
   <button class="nav-btn" data-tab="results"><i class="fas fa-check-double"></i><span>Results</span></button>
   <button class="nav-btn" data-tab="players"><i class="fas fa-users"></i><span>Players</span></button>
+  <button class="nav-btn" data-tab="calendar"><i class="fas fa-calendar-days"></i><span>Calendar</span></button>
   <button class="nav-btn" data-tab="rules"><i class="fas fa-scroll"></i><span>Rules</span></button>
   <button class="nav-btn" data-tab="admin"><i class="fas fa-shield-halved"></i><span>Admin</span></button>
 </nav>
@@ -1864,9 +2174,7 @@ a { color: var(--acid); }
   <div class="poster-header">
     <div class="poster-logo-text">METTLESTATE</div>
     <div class="poster-title">MATCHDAY FIXTURES</div>
-    <div class="poster-sub">EA FC MOBILE LEAGUE · SEASON 1</div>
-  </div>
-  <div id="poster-fixture-list" class="poster-match-list"></div>
+    <div class="poster-sub" id="poster-fixture-season">EA FC MOBILE LEAGUE · SEASON 1</div>
   <div class="poster-footer"><span>#MettlestateLeague</span><span></span></div>
   <div class="poster-bottom-bar"></div>
 </div>
@@ -1876,7 +2184,7 @@ a { color: var(--acid); }
   <div class="poster-header">
     <div class="poster-logo-text">METTLESTATE</div>
     <div class="poster-title">LEAGUE STANDINGS</div>
-    <div class="poster-sub">EA FC MOBILE LEAGUE · SEASON 1</div>
+    <div class="poster-sub" id="poster-lb-season">EA FC MOBILE LEAGUE · SEASON 1</div>
   </div>
   <div id="poster-lb-table" class="poster-lb-content"></div>
   <div class="poster-footer"><span>#MettlestateLeague</span><span>@Astral Reign</span></div>
@@ -1888,7 +2196,7 @@ a { color: var(--acid); }
   <div class="poster-header">
     <div class="poster-logo-text">METTLESTATE</div>
     <div class="poster-title">LEAGUE RULES</div>
-    <div class="poster-sub">EA FC MOBILE LEAGUE · SEASON 1</div>
+    <div class="poster-sub" id="poster-rules-season">EA FC MOBILE LEAGUE · SEASON 1</div>
   </div>
   <div id="poster-rules-content" style="padding:24px 50px"></div>
   <div class="poster-footer"><span>#MettlestateLeague</span><span>@Astral Reign</span></div>
@@ -2060,7 +2368,8 @@ const GH = {
     this.showSyncBar('Syncing to GitHub…');
     try {
       const payload = JSON.stringify({ players: snap.players, fixtures: snap.fixtures, results: snap.results, lastUpdated: new Date().toISOString() }, null, 2);
-      const ok = await this.commitFile('data/league-data.json', payload, 'Update league data — ' + new Date().toLocaleString('en-ZA'));
+      const path = seasonDataPath();
+      const ok = await this.commitFile(path, payload, 'Update league data — ' + new Date().toLocaleString('en-ZA'));
       this.hideSyncBar(ok ? 'ok' : 'error', ok ? 'Saved to GitHub' : 'Sync failed – data saved locally');
     } catch(err) { this.hideSyncBar('error', 'Sync error – data saved locally'); }
   },
@@ -2070,7 +2379,8 @@ const GH = {
     this.showSyncBar('Force syncing…');
     try {
       const payload = JSON.stringify({ players, fixtures, results, lastUpdated: new Date().toISOString() }, null, 2);
-      const ok = await this.commitFile('data/league-data.json', payload, 'Force sync — ' + new Date().toLocaleString('en-ZA'));
+      const path = seasonDataPath();
+      const ok = await this.commitFile(path, payload, 'Force sync — ' + new Date().toLocaleString('en-ZA'));
       this.hideSyncBar(ok ? 'ok' : 'error', ok ? 'Force sync complete' : 'Sync failed');
       return ok;
     } catch(err) { this.hideSyncBar('error', 'Sync error'); return false; }
@@ -2079,7 +2389,7 @@ const GH = {
     if (!this.isConnected()) return null;
     this.showSyncBar('Uploading match screenshot…');
     try {
-      const path = 'match-images/' + filename;
+      const path = seasonImagesPath() + filename;
       const ok = await this.commitFile(path, base64Data, 'Match screenshot: ' + filename, true);
       if (ok) {
         this.hideSyncBar('ok', 'Screenshot saved to GitHub');
@@ -2088,19 +2398,29 @@ const GH = {
       this.hideSyncBar('error', 'Image upload failed'); return null;
     } catch(err) { this.hideSyncBar('error', 'Image upload failed'); return null; }
   },
-  async loadRemoteData() {
+  async loadRemoteData(seasonNum) {
     if (!this.isConnected()) return null;
     this.showSyncBar('Loading data from GitHub…');
     try {
-      const res = await fetch(this.apiBase() + '/contents/data/league-data.json?ref=' + this.config.branch, { headers: this.headers() });
+      const path = seasonDataPath(seasonNum);
+      const res = await fetch(this.apiBase() + '/contents/' + path + '?ref=' + this.config.branch, { headers: this.headers() });
       if (!res.ok) { this.hideSyncBar('ok', 'No remote data yet'); return null; }
       const file = await res.json();
       const decoded = decodeURIComponent(escape(atob(file.content.replace(/\n/g, ''))));
       const data = JSON.parse(decoded);
-      if (file.sha) this._shaCache['data/league-data.json'] = file.sha;
+      if (file.sha) this._shaCache[path] = file.sha;
       this.hideSyncBar('ok', 'Data loaded from GitHub');
       return data;
     } catch(err) { this.hideSyncBar('error', 'Could not load remote data'); return null; }
+  },
+  async listSeasonFiles() {
+    if (!this.isConnected()) return [];
+    try {
+      const res = await fetch(this.apiBase() + '/contents/seasons?ref=' + this.config.branch, { headers: this.headers() });
+      if (!res.ok) return [];
+      const files = await res.json();
+      return Array.isArray(files) ? files.filter(f => f.type === 'dir' && /^S\d+$/i.test(f.name)).map(f => f.name) : [];
+    } catch(e) { return []; }
   },
   async commitFileDirect(owner, repo, branch, token, path, content, commitMsg) {
     const base = 'https://api.github.com/repos/' + owner + '/' + repo;
@@ -2133,20 +2453,31 @@ const GH = {
    Added: stats ticker, live bar, player search, results filter,
           player profile modal, result side CSS classes,
           full animation integration, all original features kept
+   Step 2: Season selector, season-aware storage & GitHub paths
 ============================================================ */
 
-let players  = JSON.parse(localStorage.getItem('eafc_players'))  || [];
-let fixtures = JSON.parse(localStorage.getItem('eafc_fixtures')) || [];
-let results  = JSON.parse(localStorage.getItem('eafc_results'))  || [];
+// ── SEASON STATE ─────────────────────────────────────────────
+let currentSeason = parseInt(localStorage.getItem('eafc_current_season') || '1');
+
+function seasonKey()        { return 'S' + currentSeason; }
+function seasonDataPath(n)  { const s = n !== undefined ? n : currentSeason; return `seasons/s${s}/league-data.json`; }
+function seasonImagesPath() { return `seasons/S${currentSeason}/match-images/`; }
+
+function seasonLocalKey(k)  { return `eafc_S${currentSeason}_${k}`; }
+
+let players  = JSON.parse(localStorage.getItem(seasonLocalKey('players')))  || JSON.parse(localStorage.getItem('eafc_players'))  || [];
+let fixtures = JSON.parse(localStorage.getItem(seasonLocalKey('fixtures'))) || JSON.parse(localStorage.getItem('eafc_fixtures')) || [];
+let results  = JSON.parse(localStorage.getItem(seasonLocalKey('results')))  || JSON.parse(localStorage.getItem('eafc_results'))  || [];
 let pendingMatchImage = null;
 
 // ── INIT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   GH.load();
   initNavigation();
+  updateSeasonPill();
 
   if (GH.isConnected()) {
-    const remote = await GH.loadRemoteData();
+    const remote = await GH.loadRemoteData();  // loads currentSeason path
     if (remote) {
       if (remote.players)  players  = remote.players;
       if (remote.fixtures) fixtures = remote.fixtures;
@@ -2190,6 +2521,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Accordion: keep open items' bodies visible on init
   document.querySelectorAll('.acc-item:not(.acc-open) .acc-body').forEach(b => b.style.display = 'none');
   document.querySelectorAll('.acc-item.acc-open .acc-body').forEach(b => b.style.display = 'block');
+
+  // ── Calendar init ──
+  initCalendar();
+  loadAutoScheduleConfig();
+  startAutoScheduler();
+  checkDailyEventFetch();
 });
 
 // ── NAVIGATION ────────────────────────────────────────────────
@@ -2200,7 +2537,8 @@ function initNavigation() {
       document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
-      if (btn.dataset.tab === 'admin') { renderEvidenceGrid(); loadPublicRepoConfigUI(); }
+      if (btn.dataset.tab === 'admin')    { renderEvidenceGrid(); loadPublicRepoConfigUI(); renderSeasonList(); updateSeasonCurrentLabel(); }
+      if (btn.dataset.tab === 'calendar') { renderCalendar(); renderUpcomingPanel(); }
     });
   });
 }
@@ -2238,7 +2576,7 @@ function updateStatsTicker() {
   }
   // Subtitle
   const sub = document.getElementById('standings-subtitle');
-  if (sub) sub.textContent = `${players.length} players · ${results.length} matches played`;
+  if (sub) sub.textContent = `Season ${currentSeason} · ${players.length} players · ${results.length} matches played`;
 }
 
 // ── LEADERBOARD ───────────────────────────────────────────────
@@ -2622,12 +2960,27 @@ function postponeMatch(matchId, playerUsername) {
   const match = fixtures.find(f => String(f.id) === String(matchId)); if (!match) return;
   const player = players.find(p => p.username === playerUsername); if (!player) return;
   if (player.postponements === undefined) player.postponements = 20;
-  if (player.postponements <= 0) { toast(`${playerUsername} has no postponements left!`, 'error'); return; }
   if (match.postponedBy) { toast('Match is already postponed', 'error'); return; }
+
+  if (player.postponements <= 0) {
+    // Auto-forfeit: no postponements left
+    const isHome = match.home === playerUsername;
+    const winnerUsername = isHome ? match.away : match.home;
+    if (!confirm(`⚠️ ${playerUsername} has 0 postponements left!\n\nThis will result in an automatic FORFEIT — ${winnerUsername} wins 3-0.\n\nProceed?`)) return;
+    applyScoreToPlayers(match, isHome ? 0 : 3, isHome ? 3 : 0);
+    results.push({ home: match.home, away: match.away, result: isHome ? 'away' : 'home', homeGoals: isHome ? 0 : 3, awayGoals: isHome ? 3 : 0, id: Date.now(), forfeit: true, autoForfeit: true });
+    fixtures.splice(fixtures.indexOf(match), 1);
+    saveData(); renderAll();
+    toast(`Auto-forfeit! ${playerUsername} had 0 postponements. ${winnerUsername} wins 3-0.`, 'error');
+    sendDiscordWebhook({ type: 'autoForfeit', player: playerUsername, winner: winnerUsername, reason: 'No postponements remaining (0/20)' });
+    return;
+  }
+
   player.postponements--;
   match.postponedBy = playerUsername;
   saveData(); renderAll();
   toast(`Match postponed by ${playerUsername} (${player.postponements} remaining)`, 'success');
+  sendDiscordWebhook({ type: 'postponement', player: playerUsername, match: `${match.home} vs ${match.away}`, remaining: player.postponements });
 }
 
 function unpostponeMatch(matchId) {
@@ -2766,6 +3119,7 @@ function toggleSuspension(index) {
 
 // ── GENERATE DRAW ─────────────────────────────────────────────
 function generateDraw() {
+  if (!checkEventWarningBeforeGenerate()) return;
   const active = players.filter(p => !p.suspended);
   if (active.length < 2) { toast('Not enough active players!', 'error'); return; }
   const mode = document.getElementById('matchday-select').value;
@@ -2774,17 +3128,19 @@ function generateDraw() {
     for (let i = 0; i < active.length; i++)
       for (let j = i+1; j < active.length; j++) {
         const exists = fixtures.some(f => (f.home===active[i].username&&f.away===active[j].username)||(f.home===active[j].username&&f.away===active[i].username));
-        if (!exists) newF.push({ home:active[i].username, away:active[j].username, id:Date.now()+Math.random() });
+        if (!exists) newF.push({ home:active[i].username, away:active[j].username, id:Date.now()+Math.random(), scheduledDate: toYMD(getSASTDate()) });
       }
     for (let i = newF.length-1; i > 0; i--) { const j=Math.floor(Math.random()*(i+1)); [newF[i],newF[j]]=[newF[j],newF[i]]; }
   } else {
     const shuffled = [...active].sort(()=>0.5-Math.random());
     for (let i=0; i<shuffled.length-1; i+=2)
-      newF.push({ home:shuffled[i].username, away:shuffled[i+1].username, id:Date.now()+i });
+      newF.push({ home:shuffled[i].username, away:shuffled[i+1].username, id:Date.now()+i, scheduledDate: toYMD(getSASTDate()) });
   }
   fixtures = [...fixtures, ...newF];
   saveData(); renderAll(); switchTab('fixtures');
   toast(`Generated ${newF.length} fixtures`, 'success');
+  sendDiscordWebhook({ type: 'manualGenerate', count: newF.length, mode, date: toYMD(getSASTDate()) });
+  if (document.getElementById('calendar')?.classList.contains('active')) renderCalendar();
 }
 
 function addManualMatch() {
@@ -2831,7 +3187,7 @@ async function pushToPublicLeaderboard(silent=false) {
   if (!silent) { const s = document.getElementById('pub-sync-status'); if (s) { s.textContent='Pushing…'; s.className='gh-status-msg'; } }
   const payload = JSON.stringify({ players, fixtures, results, lastUpdated: new Date().toISOString() }, null, 2);
   try {
-    const ok = await GH.commitFileDirect(cfg.owner, cfg.repo, cfg.branch, cfg.token, 'data/league-data.json', payload, 'Update public leaderboard — ' + new Date().toLocaleString('en-ZA'));
+    const ok = await GH.commitFileDirect(cfg.owner, cfg.repo, cfg.branch, cfg.token, seasonDataPath(), payload, 'Update public leaderboard — ' + new Date().toLocaleString('en-ZA'));
     if (!silent) {
       const s = document.getElementById('pub-sync-status');
       if (s) { s.textContent = ok ? '✓ Public leaderboard updated!' : '✗ Push failed'; s.className = 'gh-status-msg ' + (ok?'gh-status-ok':'gh-status-error'); }
@@ -2902,22 +3258,23 @@ async function saveData() {
   if (GH.isConnected()) await GH.syncData(players, fixtures, results);
 }
 function saveLocalOnly() {
-  localStorage.setItem('eafc_players', JSON.stringify(players));
-  localStorage.setItem('eafc_fixtures', JSON.stringify(fixtures));
-  localStorage.setItem('eafc_results', JSON.stringify(results));
+  localStorage.setItem(seasonLocalKey('players'),  JSON.stringify(players));
+  localStorage.setItem(seasonLocalKey('fixtures'), JSON.stringify(fixtures));
+  localStorage.setItem(seasonLocalKey('results'),  JSON.stringify(results));
 }
 function exportData() {
-  const blob = new Blob([JSON.stringify({players,fixtures,results},null,2)], {type:'application/json'});
+  const blob = new Blob([JSON.stringify({players,fixtures,results,season:currentSeason},null,2)], {type:'application/json'});
   const link = document.createElement('a');
-  link.download = `Mettlestate_Backup_${dateStamp()}.json`;
+  link.download = `Mettlestate_S${currentSeason}_Backup_${dateStamp()}.json`;
   link.href = URL.createObjectURL(blob);
   link.click();
   toast('Backup exported!','success');
 }
 function clearData() {
-  if (!confirm('⚠️ This will DELETE all players, fixtures, and results. Are you absolutely sure?')) return;
-  localStorage.clear(); players=[]; fixtures=[]; results=[];
-  renderAll(); toast('League reset.','success');
+  if (!confirm(`⚠️ This will DELETE all players, fixtures, and results for Season ${currentSeason}. Are you absolutely sure?`)) return;
+  players=[]; fixtures=[]; results=[];
+  saveLocalOnly();
+  renderAll(); toast(`Season ${currentSeason} reset.`, 'success');
 }
 
 // ── IMAGE EXPORT ──────────────────────────────────────────────
@@ -2979,7 +3336,7 @@ function downloadLeaderboardImage() {
 
 function downloadRulesImage() {
   document.getElementById('poster-rules-content').innerHTML = document.getElementById('rules-content').innerHTML;
-  captureElement('rules-capture-area', `Mettlestate_Rules_Season1.png`, 'Rules image downloaded!');
+  captureElement('rules-capture-area', `Mettlestate_Rules_Season${currentSeason}.png`, 'Rules image downloaded!');
 }
 
 function captureElement(elId, filename, successMsg) {
@@ -3162,11 +3519,22 @@ async function applySelectedOCRChanges() {
     const match=fixtures.find(f=>f.home===p.player||f.away===p.player);
     if (match&&!match.postponedBy) {
       const player=players.find(pl=>pl.username===p.player);
-      if (player&&(player.postponements||0)>0) {
-        player.postponements=(player.postponements||20)-1; match.postponedBy=p.player;
-        actions.push(`✅ Postponed ${match.home} vs ${match.away} by ${p.player}`);
-        await sendDiscordWebhook({type:'postponement',player:p.player,match:`${match.home} vs ${match.away}`,remaining:player.postponements});
-      } else actions.push(`⚠️ ${p.player} has no postponements left`);
+      if (player) {
+        if ((player.postponements||0) <= 0) {
+          // Auto-forfeit: player has no postponements left
+          const isHome = match.home === p.player;
+          const winnerUsername = isHome ? match.away : match.home;
+          applyScoreToPlayers(match, isHome?0:3, isHome?3:0);
+          results.push({home:match.home,away:match.away,result:isHome?'away':'home',homeGoals:isHome?0:3,awayGoals:isHome?3:0,id:Date.now()+Math.random(),forfeit:true,autoForfeit:true,imageDataUrl});
+          fixtures.splice(fixtures.indexOf(match),1);
+          actions.push(`🚫 Auto-forfeit: ${p.player} had 0 postponements left — ${winnerUsername} wins 3-0`);
+          await sendDiscordWebhook({type:'autoForfeit',player:p.player,winner:winnerUsername,reason:'No postponements remaining (0/20)'});
+        } else {
+          player.postponements=(player.postponements||20)-1; match.postponedBy=p.player;
+          actions.push(`✅ Postponed ${match.home} vs ${match.away} by ${p.player}`);
+          await sendDiscordWebhook({type:'postponement',player:p.player,match:`${match.home} vs ${match.away}`,remaining:player.postponements});
+        }
+      }
     }
   }
   for (const f of selected.forfeits) {
@@ -3226,6 +3594,473 @@ function applyScoreToPlayers(match, hg, ag) {
   else { homeP.draws=(homeP.draws||0)+1;homeP.points=(homeP.points||0)+1;awayP.draws=(awayP.draws||0)+1;awayP.points=(awayP.points||0)+1;addForm(homeP,'D');addForm(awayP,'D'); }
 }
 
+// ── SEASON MANAGEMENT ────────────────────────────────────────
+function updateSeasonCurrentLabel() {
+  const lbl = document.getElementById('season-current-label');
+  const path = document.getElementById('season-current-path');
+  if (lbl) lbl.textContent = `SEASON ${currentSeason} — CURRENT`;
+  if (path) path.textContent = `seasons/s${currentSeason}/league-data.json`;
+}
+
+function updateSeasonPill() {
+  const pill = document.getElementById('season-pill-label');
+  if (pill) pill.textContent = 'S' + currentSeason;
+  updateSeasonCurrentLabel();
+  // Update all season-number displays
+  const seasonStr = `EA FC MOBILE LEAGUE · SEASON ${currentSeason}`;
+  ['poster-fixture-season','poster-lb-season','poster-rules-season'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.textContent = seasonStr;
+  });
+  const rsb = document.getElementById('rules-season-badge');   if (rsb) rsb.textContent = `SEASON ${currentSeason}`;
+  const rss = document.getElementById('rules-season-subtitle'); if (rss) rss.textContent = `Official regulations · Season ${currentSeason}`;
+}
+
+function getKnownSeasons() {
+  // Returns array of season numbers known locally
+  const seasons = new Set([currentSeason]);
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    const m = k && k.match(/^eafc_S(\d+)_players$/);
+    if (m) seasons.add(parseInt(m[1]));
+  }
+  return [...seasons].sort((a,b) => a - b);
+}
+
+function getSeasonMeta(n) {
+  const p = JSON.parse(localStorage.getItem(`eafc_S${n}_players`) || '[]');
+  const r = JSON.parse(localStorage.getItem(`eafc_S${n}_results`) || '[]');
+  const f = JSON.parse(localStorage.getItem(`eafc_S${n}_fixtures`) || '[]');
+  return { players: p.length, results: r.length, fixtures: f.length };
+}
+
+async function switchToSeason(n) {
+  if (n === currentSeason) { toast(`Already on Season ${n}`, 'success'); return; }
+  // Save current season first
+  saveLocalOnly();
+  // Switch
+  currentSeason = n;
+  localStorage.setItem('eafc_current_season', String(n));
+  // Try to load from GitHub first
+  if (GH.isConnected()) {
+    const remote = await GH.loadRemoteData();
+    if (remote) {
+      if (remote.players)  players  = remote.players;
+      if (remote.fixtures) fixtures = remote.fixtures;
+      if (remote.results)  results  = remote.results;
+      saveLocalOnly();
+      updateSeasonPill(); renderAll(); renderSeasonList();
+      toast(`Switched to Season ${n} (GitHub)`, 'success');
+      sendDiscordWebhook({ type: 'seasonSwitch', season: n, source: 'github' });
+      return;
+    }
+  }
+  // Fall back to local
+  players  = JSON.parse(localStorage.getItem(`eafc_S${n}_players`)  || '[]');
+  fixtures = JSON.parse(localStorage.getItem(`eafc_S${n}_fixtures`) || '[]');
+  results  = JSON.parse(localStorage.getItem(`eafc_S${n}_results`)  || '[]');
+  updateSeasonPill(); renderAll(); renderSeasonList();
+  toast(`Switched to Season ${n}`, 'success');
+  sendDiscordWebhook({ type: 'seasonSwitch', season: n, source: 'local' });
+}
+
+async function startNewSeason() {
+  const nextSeason = Math.max(...getKnownSeasons()) + 1;
+  if (!confirm(`Start Season ${nextSeason}?\n\nCurrent Season ${currentSeason} data will be archived to GitHub (seasons/s${currentSeason}/league-data.json) and locally.\n\nAll players, fixtures and results will be cleared for the new season.`)) return;
+
+  const statusEl = document.getElementById('season-mgmt-status');
+  if (statusEl) { statusEl.innerHTML = '<span style="color:var(--acid)"><i class="fas fa-spinner fa-spin"></i> Archiving current season…</span>'; }
+
+  // Save current season to GitHub
+  if (GH.isConnected()) {
+    await GH.syncDataNow(players, fixtures, results);
+  }
+  saveLocalOnly(); // also keep in localStorage
+
+  // Switch to new season
+  currentSeason = nextSeason;
+  localStorage.setItem('eafc_current_season', String(nextSeason));
+  players = []; fixtures = []; results = [];
+  saveLocalOnly();
+
+  updateSeasonPill(); renderAll(); renderSeasonList();
+  if (statusEl) { statusEl.innerHTML = `<span style="color:var(--green)"><i class="fas fa-check-circle"></i> Season ${nextSeason} started! Previous season archived.</span>`; }
+  toast(`Season ${nextSeason} started!`, 'success');
+  sendDiscordWebhook({ type: 'newSeason', season: nextSeason, prevSeason: nextSeason - 1 });
+}
+
+function renderSeasonList() {
+  const list = document.getElementById('season-list');
+  if (!list) return;
+  const seasons = getKnownSeasons();
+  list.innerHTML = '';
+  [...seasons].reverse().forEach(n => {
+    const meta = getSeasonMeta(n);
+    const isActive = n === currentSeason;
+    const card = document.createElement('div');
+    card.className = 'season-card' + (isActive ? ' active-season' : '');
+    card.innerHTML = `
+      <div>
+        <div class="season-card-label">Season ${n} ${isActive ? '· CURRENT' : ''}</div>
+        <div class="season-card-meta">${meta.players} players · ${meta.results} results · ${meta.fixtures} pending</div>
+      </div>
+      <div class="season-card-actions">
+        ${!isActive ? `<button class="btn-secondary" style="padding:6px 10px;font-size:0.75rem" onclick="switchToSeason(${n})"><i class="fas fa-rotate-left"></i> Load</button>` : '<span style="font-size:0.7rem;color:var(--acid);font-family:\'JetBrains Mono\',monospace;letter-spacing:1px">ACTIVE</span>'}
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+// ── CALENDAR SYSTEM ───────────────────────────────────────────
+// SA Public Holidays (SAST) — 2025 & 2026
+const SA_HOLIDAYS = {
+  '2025-01-01': "New Year's Day",
+  '2025-03-21': 'Human Rights Day',
+  '2025-04-18': 'Good Friday',
+  '2025-04-21': 'Family Day',
+  '2025-04-27': 'Freedom Day',
+  '2025-05-01': 'Workers Day',
+  '2025-06-16': 'Youth Day',
+  '2025-08-09': "National Women's Day",
+  '2025-09-24': 'Heritage Day',
+  '2025-12-16': 'Day of Reconciliation',
+  '2025-12-25': 'Christmas Day',
+  '2025-12-26': 'Day of Goodwill',
+  '2026-01-01': "New Year's Day",
+  '2026-03-21': 'Human Rights Day',
+  '2026-04-03': 'Good Friday',
+  '2026-04-06': 'Family Day',
+  '2026-04-27': 'Freedom Day',
+  '2026-05-01': 'Workers Day',
+  '2026-06-16': 'Youth Day',
+  '2026-08-10': "National Women's Day (observed)",
+  '2026-09-24': 'Heritage Day',
+  '2026-12-16': 'Day of Reconciliation',
+  '2026-12-25': 'Christmas Day',
+  '2026-12-26': 'Day of Goodwill'
+};
+
+let calViewYear, calViewMonth;
+let mettlestateEvents = JSON.parse(localStorage.getItem('mettlestate_events') || '[]');
+// mettlestateEvents: [{date: 'YYYY-MM-DD', title: 'Event Name', url: '...'}]
+
+function getSASTDate() {
+  // Returns a Date object adjusted to GMT+2 (SAST)
+  const now = new Date();
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  return new Date(utc + 2 * 3600000);
+}
+
+function toYMD(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${dd}`;
+}
+
+function initCalendar() {
+  const today = getSASTDate();
+  calViewYear = today.getFullYear();
+  calViewMonth = today.getMonth();
+  renderCalendar();
+  updateCalClock();
+  setInterval(updateCalClock, 1000);
+  renderUpcomingPanel();
+}
+
+function updateCalClock() {
+  const d = getSASTDate();
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mm = String(d.getMinutes()).padStart(2,'0');
+  const ss = String(d.getSeconds()).padStart(2,'0');
+  const el = document.getElementById('cal-clock-time');
+  if (el) el.textContent = `${hh}:${mm}:${ss}`;
+  const todayEl = document.getElementById('cal-today-label');
+  if (todayEl) todayEl.textContent = d.toLocaleDateString('en-ZA', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+}
+
+const MONTH_NAMES = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+const DAY_NAMES   = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+function calPrev() { calViewMonth--; if (calViewMonth < 0) { calViewMonth=11; calViewYear--; } renderCalendar(); }
+function calNext() { calViewMonth++; if (calViewMonth > 11) { calViewMonth=0; calViewYear++; } renderCalendar(); }
+
+function renderCalendar() {
+  const lbl = document.getElementById('cal-month-label');
+  if (lbl) lbl.textContent = `${MONTH_NAMES[calViewMonth]} ${calViewYear}`;
+  const grid = document.getElementById('cal-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  // Day headers
+  DAY_NAMES.forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-day-label'; h.textContent = d;
+    grid.appendChild(h);
+  });
+  const today = toYMD(getSASTDate());
+  const firstDay = new Date(calViewYear, calViewMonth, 1).getDay();
+  const daysInMonth = new Date(calViewYear, calViewMonth+1, 0).getDate();
+  const prevDays = new Date(calViewYear, calViewMonth, 0).getDate();
+
+  // Fixture dates set
+  const fixtureDates = new Set(fixtures.map(f => f.scheduledDate).filter(Boolean));
+
+  for (let i = 0; i < 42; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell';
+    let dayNum, ymd;
+    if (i < firstDay) {
+      dayNum = prevDays - firstDay + i + 1;
+      const pd = new Date(calViewYear, calViewMonth-1, dayNum);
+      ymd = toYMD(pd);
+      cell.classList.add('other-month');
+    } else if (i - firstDay < daysInMonth) {
+      dayNum = i - firstDay + 1;
+      ymd = `${calViewYear}-${String(calViewMonth+1).padStart(2,'0')}-${String(dayNum).padStart(2,'0')}`;
+    } else {
+      dayNum = i - firstDay - daysInMonth + 1;
+      const nd = new Date(calViewYear, calViewMonth+1, dayNum);
+      ymd = toYMD(nd);
+      cell.classList.add('other-month');
+    }
+
+    const isHoliday = !!SA_HOLIDAYS[ymd];
+    const isEvent   = mettlestateEvents.some(e => e.date === ymd);
+    const isFixture = fixtureDates.has(ymd);
+    const isToday   = ymd === today;
+
+    if (isToday)   cell.classList.add('today');
+    if (isHoliday) cell.classList.add('has-holiday');
+    if (isEvent)   cell.classList.add('has-event');
+    if (isFixture) cell.classList.add('has-fixture');
+
+    cell.innerHTML = `<div class="cal-date-num">${dayNum}</div><div class="cal-dot-row">
+      ${isHoliday ? '<div class="cal-dot d-holiday" title="'+esc(SA_HOLIDAYS[ymd])+'"></div>' : ''}
+      ${isEvent   ? '<div class="cal-dot d-event" title="Mettlestate Event"></div>' : ''}
+      ${isFixture ? '<div class="cal-dot d-fixture" title="Fixture Day"></div>' : ''}
+    </div>`;
+    cell.title = [
+      isHoliday ? '🟠 '+SA_HOLIDAYS[ymd] : '',
+      isEvent   ? '🔴 Mettlestate Event' : '',
+      isFixture ? '🔵 Fixtures scheduled' : ''
+    ].filter(Boolean).join('\n') || ymd;
+    grid.appendChild(cell);
+  }
+}
+
+function renderUpcomingPanel() {
+  const list = document.getElementById('cal-upcoming-list');
+  if (!list) return;
+  const today = getSASTDate();
+  const todayYMD = toYMD(today);
+  const items = [];
+
+  // Next 30 days
+  for (let i = 0; i <= 30; i++) {
+    const d = new Date(today); d.setDate(d.getDate() + i);
+    const ymd = toYMD(d);
+    if (SA_HOLIDAYS[ymd]) items.push({ ymd, label: SA_HOLIDAYS[ymd], type: 'holiday', daysAway: i });
+    mettlestateEvents.filter(e => e.date === ymd).forEach(e => items.push({ ymd, label: e.title||'Mettlestate Event', type: 'event', daysAway: i, url: e.url }));
+  }
+
+  if (!items.length) {
+    list.innerHTML = '<div style="color:var(--muted);font-size:0.8rem">No holidays or events in the next 30 days.</div>';
+    return;
+  }
+  list.innerHTML = items.map(it => {
+    const color = it.type === 'holiday' ? 'var(--orange)' : 'var(--red)';
+    const icon  = it.type === 'holiday' ? 'fa-umbrella-beach' : 'fa-calendar-xmark';
+    const when  = it.daysAway === 0 ? '<strong style="color:var(--red)">TODAY</strong>' : it.daysAway === 1 ? 'Tomorrow' : `In ${it.daysAway} days`;
+    return `<div class="cal-event-item">
+      <div class="cal-event-dot" style="background:${color}"></div>
+      <div style="flex:1">
+        <div style="font-weight:600;font-size:0.82rem">${esc(it.label)}</div>
+        <div style="font-size:0.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px">${it.ymd} · ${when}</div>
+      </div>
+      <div style="font-size:0.68rem;color:${color};font-family:'JetBrains Mono',monospace;letter-spacing:0.5px">${it.type.toUpperCase()}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── METTLESTATE EVENT FETCHER ─────────────────────────────────
+async function refreshMettlestateEvents() {
+  const statusEl = document.getElementById('cal-event-sync-status');
+  if (statusEl) statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fetching events from Mettlestate…';
+  try {
+    const url = 'https://www.mettlestate.com/games/ea-fc-mobile/events?date=upcoming';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(15000) });
+    if (!res.ok) throw new Error('Proxy fetch failed: ' + res.status);
+    const html = await res.text();
+    const events = parseMettlestateEvents(html);
+    mettlestateEvents = events;
+    localStorage.setItem('mettlestate_events', JSON.stringify(events));
+    localStorage.setItem('mettlestate_events_lastfetch', new Date().toISOString());
+    if (statusEl) statusEl.innerHTML = `<i class="fas fa-check-circle" style="color:var(--green)"></i> ${events.length} event(s) loaded · ${new Date().toLocaleString('en-ZA')}`;
+    renderCalendar(); renderUpcomingPanel();
+    toast(`${events.length} Mettlestate event(s) synced`, 'success');
+    sendDiscordWebhook({ type: 'eventSync', count: events.length });
+  } catch(e) {
+    if (statusEl) statusEl.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:var(--orange)"></i> Could not fetch events — ${esc(e.message)}. Events may be blocked by CORS. Add them manually.`;
+    toast('Could not fetch Mettlestate events', 'error');
+  }
+}
+
+function parseMettlestateEvents(html) {
+  // Parse event dates from Mettlestate HTML
+  const events = [];
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    // Try common selectors
+    const dateRegex = /(\d{4}-\d{2}-\d{2})/g;
+    const titleEls = doc.querySelectorAll('[class*="event"], [class*="card"], article, .tournament, [class*="tournament"]');
+    titleEls.forEach(el => {
+      const text = el.textContent || '';
+      const dateMatches = text.match(dateRegex);
+      if (dateMatches) {
+        dateMatches.forEach(d => {
+          const title = el.querySelector('h1,h2,h3,h4,[class*="title"],[class*="name"]')?.textContent?.trim() || 'EA FC Mobile Event';
+          if (!events.some(e => e.date === d)) {
+            events.push({ date: d, title: title.slice(0,60), url: 'https://www.mettlestate.com/games/ea-fc-mobile/events?date=upcoming' });
+          }
+        });
+      }
+    });
+    // Fallback: scan all text for ISO dates near "event" context
+    if (!events.length) {
+      const allText = doc.body?.textContent || '';
+      const matches = [...allText.matchAll(/(\d{4}-\d{2}-\d{2})/g)];
+      matches.forEach(m => {
+        if (!events.some(e => e.date === m[1])) {
+          events.push({ date: m[1], title: 'EA FC Mobile Event', url: 'https://www.mettlestate.com/games/ea-fc-mobile/events?date=upcoming' });
+        }
+      });
+    }
+  } catch(e) {}
+  return events;
+}
+
+// Auto-fetch events daily
+function checkDailyEventFetch() {
+  const lastFetch = localStorage.getItem('mettlestate_events_lastfetch');
+  if (!lastFetch) { refreshMettlestateEvents(); return; }
+  const last = new Date(lastFetch);
+  const today = getSASTDate();
+  if (last.getDate() !== today.getDate() || last.getMonth() !== today.getMonth() || last.getFullYear() !== today.getFullYear()) {
+    refreshMettlestateEvents();
+  }
+}
+
+// ── AUTO-SCHEDULE CONFIG ──────────────────────────────────────
+function saveAutoScheduleConfig() {
+  const cfg = {
+    autoGen:      document.getElementById('toggle-auto-gen')?.checked || false,
+    autoDraw:     document.getElementById('toggle-auto-draw')?.checked || false,
+    skipEvents:   document.getElementById('toggle-skip-events')?.checked ?? true,
+    skipHolidays: document.getElementById('toggle-skip-holidays')?.checked ?? true,
+    ignoreList:   document.getElementById('auto-ignore-fixtures')?.value?.trim() || ''
+  };
+  localStorage.setItem('eafc_auto_schedule', JSON.stringify(cfg));
+  const el = document.getElementById('auto-schedule-status');
+  if (el) el.textContent = '✓ Config saved — ' + new Date().toLocaleString('en-ZA');
+}
+
+function loadAutoScheduleConfig() {
+  const raw = localStorage.getItem('eafc_auto_schedule');
+  if (!raw) return;
+  const cfg = JSON.parse(raw);
+  const sv = (id, val) => { const el = document.getElementById(id); if (el) el.checked = !!val; };
+  sv('toggle-auto-gen',      cfg.autoGen);
+  sv('toggle-auto-draw',     cfg.autoDraw);
+  sv('toggle-skip-events',   cfg.skipEvents ?? true);
+  sv('toggle-skip-holidays', cfg.skipHolidays ?? true);
+  const ig = document.getElementById('auto-ignore-fixtures');
+  if (ig) ig.value = cfg.ignoreList || '';
+}
+
+function getAutoScheduleConfig() {
+  const raw = localStorage.getItem('eafc_auto_schedule');
+  return raw ? JSON.parse(raw) : { autoGen: false, autoDraw: false, skipEvents: true, skipHolidays: true, ignoreList: '' };
+}
+
+let _autoScheduleLastRun = localStorage.getItem('eafc_auto_last_run') || '';
+
+function startAutoScheduler() {
+  setInterval(autoSchedulerTick, 60000); // check every minute
+  autoSchedulerTick(); // also run on startup
+}
+
+async function autoSchedulerTick() {
+  const cfg = getAutoScheduleConfig();
+  if (!cfg.autoGen && !cfg.autoDraw) return;
+  const now = getSASTDate();
+  const todayYMD = toYMD(now);
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  // Fire between 02:00 and 02:05 SAST
+  if (hour !== 2 || minute > 5) return;
+  if (_autoScheduleLastRun === todayYMD) return; // already ran today
+
+  // Check blocking conditions
+  if (cfg.skipHolidays && SA_HOLIDAYS[todayYMD]) {
+    await sendDiscordWebhook({ type: 'autoSkip', reason: 'SA Public Holiday: ' + SA_HOLIDAYS[todayYMD], date: todayYMD });
+    _autoScheduleLastRun = todayYMD;
+    localStorage.setItem('eafc_auto_last_run', todayYMD);
+    return;
+  }
+  if (cfg.skipEvents && mettlestateEvents.some(e => e.date === todayYMD)) {
+    const ev = mettlestateEvents.find(e => e.date === todayYMD);
+    await sendDiscordWebhook({ type: 'autoSkip', reason: 'Mettlestate Event: ' + (ev?.title || 'Event'), date: todayYMD });
+    _autoScheduleLastRun = todayYMD;
+    localStorage.setItem('eafc_auto_last_run', todayYMD);
+    return;
+  }
+
+  if (cfg.autoGen) {
+    const ignoreList = cfg.ignoreList ? cfg.ignoreList.split(',').map(s => s.trim().toLowerCase()) : [];
+    const active = players.filter(p => !p.suspended && !ignoreList.includes(p.username.toLowerCase()));
+    if (active.length >= 2) {
+      const mode = 'random';
+      const shuffled = [...active].sort(() => 0.5 - Math.random());
+      const newF = [];
+      for (let i = 0; i < shuffled.length-1; i+=2) {
+        newF.push({ home: shuffled[i].username, away: shuffled[i+1].username, id: Date.now()+i, scheduledDate: todayYMD });
+      }
+      fixtures = [...fixtures, ...newF];
+      await saveData(); renderAll();
+      await sendDiscordWebhook({ type: 'autoGenerate', count: newF.length, date: todayYMD });
+    }
+  }
+  if (cfg.autoDraw) {
+    // Auto-draw: randomise all fixture home/away (re-shuffle)
+    fixtures = fixtures.map(f => {
+      if (Math.random() > 0.5) return { ...f, home: f.away, away: f.home };
+      return f;
+    });
+    await saveData(); renderAll();
+    await sendDiscordWebhook({ type: 'autoDraw', count: fixtures.length, date: todayYMD });
+  }
+
+  _autoScheduleLastRun = todayYMD;
+  localStorage.setItem('eafc_auto_last_run', todayYMD);
+}
+
+// ── CHECK IF TODAY IS EVENT/HOLIDAY (for fixture generation warning) ──
+function checkEventWarningBeforeGenerate() {
+  const cfg = getAutoScheduleConfig();
+  const todayYMD = toYMD(getSASTDate());
+  const warnings = [];
+  if (SA_HOLIDAYS[todayYMD]) warnings.push(`⚠️ Today is a SA Public Holiday: ${SA_HOLIDAYS[todayYMD]}`);
+  const todayEvent = mettlestateEvents.find(e => e.date === todayYMD);
+  if (todayEvent) warnings.push(`🔴 There is a Mettlestate event today: ${todayEvent.title || 'EA FC Mobile Event'}`);
+  if (warnings.length > 0) {
+    const msg = warnings.join('\n') + '\n\nAre you sure you want to generate fixtures today?';
+    return confirm(msg);
+  }
+  return true;
+}
+
 // ── DISCORD ───────────────────────────────────────────────────
 const DISCORD_WEBHOOK_URL='https://discord.com/api/webhooks/1490038911446024373/hF9PEIg5K4Aafed80pXjXg7GbHqYAB05kn2q-l96_9DpYsJ7KrU5hL50PrZUWo-6l1sy';
 async function sendDiscordWebhook(data) {
@@ -3235,6 +4070,14 @@ async function sendDiscordWebhook(data) {
     else if (data.type==='forfeit') embed={title:'🏳️ Match Forfeited',description:`**${data.forfeiter}** forfeited → **${data.winner}** wins 3-0`,color:0xFFD60A,fields:[{name:'Winner',value:data.winner,inline:true},{name:'Forfeiter',value:data.forfeiter,inline:true},{name:'Score',value:data.score,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
     else if (data.type==='noshow') embed={title:'⚡ No-Show Win',description:`**${data.winner}** awarded 3-0 vs **${data.noshow}**`,color:0x32D74B,fields:[{name:'Winner',value:data.winner,inline:true},{name:'No-Show',value:data.noshow,inline:true},{name:'Score',value:data.score,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
     else if (data.type==='result') { const rt=data.result==='home'?`${data.home} wins`:data.result==='away'?`${data.away} wins`:'Draw'; embed={title:'⚽ Match Result',description:`**${data.home}** ${data.score} **${data.away}**`,color:0x00E5FF,fields:[{name:'Home',value:data.home,inline:true},{name:'Away',value:data.away,inline:true},{name:'Result',value:rt,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}}; }
+    else if (data.type==='newSeason')    embed={title:'🏆 New Season Started',description:`**Season ${data.season}** has begun! Season ${data.prevSeason} has been archived.`,color:0xC8F135,fields:[{name:'New Season',value:`S${data.season}`,inline:true},{name:'Archived',value:`S${data.prevSeason}`,inline:true},{name:'Path',value:`seasons/s${data.prevSeason}/league-data.json`,inline:false}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
+    else if (data.type==='seasonSwitch') embed={title:'🔄 Season Switched',description:`Now viewing **Season ${data.season}**`,color:0x00E5FF,fields:[{name:'Source',value:data.source==='github'?'GitHub':'Local Storage',inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
+    else if (data.type==='autoForfeit') embed={title:'🚫 Auto-Forfeit (No Postponements Left)',description:`**${data.player}** attempted to postpone with 0/20 remaining`,color:0xFF2D55,fields:[{name:'Winner',value:data.winner,inline:true},{name:'Loser',value:data.player,inline:true},{name:'Score',value:'3-0',inline:true},{name:'Reason',value:data.reason,inline:false}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
+    else if (data.type==='manualGenerate') embed={title:'🔀 Fixtures Generated',description:`${data.count} fixture(s) generated manually`,color:0xC8F135,fields:[{name:'Mode',value:data.mode==='roundrobin'?'Round Robin':'Random Pairs',inline:true},{name:'Count',value:`${data.count}`,inline:true},{name:'Date',value:data.date,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
+    else if (data.type==='autoGenerate') embed={title:'🤖 Auto-Fixtures Generated',description:`${data.count} fixture(s) auto-generated at 2am SAST`,color:0xC8F135,fields:[{name:'Date',value:data.date,inline:true},{name:'Fixtures',value:`${data.count} generated`,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager · Auto-Scheduler'}};
+    else if (data.type==='autoDraw')     embed={title:'🎲 Auto-Draw Completed',description:`${data.count} fixture(s) randomised at 2am SAST`,color:0xBF5AF2,fields:[{name:'Date',value:data.date,inline:true}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager · Auto-Scheduler'}};
+    else if (data.type==='autoSkip')     embed={title:'⏭️ Auto-Schedule Skipped',description:`Auto-schedule skipped for ${data.date}`,color:0xFF9500,fields:[{name:'Reason',value:data.reason,inline:false}],timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager · Auto-Scheduler'}};
+    else if (data.type==='eventSync')    embed={title:'📅 Mettlestate Events Synced',description:`${data.count} upcoming event(s) fetched from Mettlestate`,color:0x00E5FF,timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
     else if (data.type==='suspension') embed={title:data.suspended?'🚫 Player Suspended':'▶️ Player Reactivated',description:`**${data.player}** has been ${data.suspended?'suspended':'reactivated'}`,color:data.suspended?0xFF2D55:0x32D74B,timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
     else if (data.type==='pageload') embed={title:'🌐 Website Accessed',description:'League website loaded',color:0xBF5AF2,timestamp:new Date().toISOString(),footer:{text:'Mettlestate League Manager'}};
     if (!embed) return;
